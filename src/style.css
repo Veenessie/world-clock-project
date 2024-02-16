@@ -3,6 +3,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+a {
+  color: #c49af8;
+  text-decoration: none;
+}
 .container {
   background: white;
   max-width: 600%;
