@@ -18,24 +18,27 @@
   <body>
     <div class="container">
       <h1>World Clocks 🕰</h1>
-      <select>
+      <select id="select-city">
         <option>Select a city</option>
-        <option>London 🇬🇧</option>
-        <option>Paris 🇫🇷</option>
+        <option value="Europe/London">London 🇬🇧</option>
+        <option value="Europe/Paris">Paris 🇫🇷</option>
+        <option value="America/New_York">New York 🇺🇸</option>
       </select>
-      <div class="city" id="tokyo">
-        <div>
-          <h2>Tokyo 🇯🇵</h2>
-          <div class="city-date">February 15th 2024</div>
+      <div id="cities">
+        <div class="city" id="tokyo">
+          <div>
+            <h2>Tokyo 🇯🇵</h2>
+            <div class="city-date">February 15th 2024</div>
+          </div>
+          <div class="city-time">14:28:13 <small>AM</small></div>
         </div>
-        <div class="city-time">14:28:13 <small>AM</small></div>
-      </div>
-      <div class="city" id="toronto">
-        <div>
-          <h2>Toronto 🇨🇦</h2>
-          <div class="city-date">February 15th 2024</div>
+        <div class="city" id="toronto">
+          <div>
+            <h2>Toronto 🇨🇦</h2>
+            <div class="city-date">February 15th 2024</div>
+          </div>
+          <div class="city-time">14:28:13 <small>AM</small></div>
         </div>
-        <div class="city-time">14:28:13 <small>AM</small></div>
       </div>
     </div>
     <footer>

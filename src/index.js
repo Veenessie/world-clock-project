@@ -1,29 +1,54 @@
 function tellTokyoTime() {
   let tokyoElement = document.querySelector("#tokyo");
-  let tokyoDateElement = tokyoElement.querySelector(".city-date");
-  let tokyoTimeElement = tokyoElement.querySelector(".city-time");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".city-date");
+    let tokyoTimeElement = tokyoElement.querySelector(".city-time");
 
-  let tokyoDate = moment().tz("Asia/Tokyo").format("MMMM Do YYYY");
-  let tokyoTime = moment()
-    .tz("Asia/Tokyo")
-    .format("H:m:ss[ <small>]A[</small]");
+    let tokyoDate = moment().tz("Asia/Tokyo").format("MMMM Do YYYY");
+    let tokyoTime = moment()
+      .tz("Asia/Tokyo")
+      .format("H:mm:ss[ <small>]A[</small]");
 
-  tokyoDateElement.innerHTML = tokyoDate;
-  tokyoTimeElement.innerHTML = tokyoTime;
+    tokyoDateElement.innerHTML = tokyoDate;
+    tokyoTimeElement.innerHTML = tokyoTime;
+  }
 }
 
 function tellTorontoTime() {
   let torontoElement = document.querySelector("#toronto");
-  let torontoDateElement = torontoElement.querySelector(".city-date");
-  let torontoTimeElement = torontoElement.querySelector(".city-time");
+  if (torontoElement) {
+    let torontoDateElement = torontoElement.querySelector(".city-date");
+    let torontoTimeElement = torontoElement.querySelector(".city-time");
 
-  let torontoDate = moment().tz("America/Toronto").format("MMMM Do YYYY");
-  let torontoTime = moment()
-    .tz("America/Toronto")
-    .format("H:m:ss[ <small>]A[</small]");
+    let torontoDate = moment().tz("America/Toronto").format("MMMM Do YYYY");
+    let torontoTime = moment()
+      .tz("America/Toronto")
+      .format("H:mm:ss[ <small>]A[</small]");
 
-  torontoDateElement.innerHTML = torontoDate;
-  torontoTimeElement.innerHTML = torontoTime;
+    torontoDateElement.innerHTML = torontoDate;
+    torontoTimeElement.innerHTML = torontoTime;
+  }
+}
+
+function updateCity(event) {
+  let cityTimezone = event.target.value;
+  let cityTime = moment().tz(cityTimezone);
+  let cityName = cityTimezone.replace("_", " ").split("/")[1];
+  let cityElement = document.querySelector("#cities");
+  cityElement.innerHTML = `
+<div class="city">
+          <div>
+            <h2>${cityName}</h2>
+            <div class="city-date">${cityTime.format("MMMM Do YYYY")}</div>
+          </div>
+          <div class="city-time">${cityTime.format(
+            "H:mm:ss[ <small>]A[</small]"
+          )}
+        </div>
+
+
+
+`;
 }
 
 tellTokyoTime();
@@ -31,3 +56,7 @@ setInterval(tellTokyoTime, 1000);
 
 tellTorontoTime();
 setInterval(tellTorontoTime, 1000);
+
+let citySelectElement = document.querySelector("#select-city");
+
+citySelectElement.addEventListener("change", updateCity);
